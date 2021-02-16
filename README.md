@@ -1,2 +1,1 @@
-# lolabot
-Lolabot
+# LolaBot, the Lovense Discord Bot.
