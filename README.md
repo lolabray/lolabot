@@ -132,3 +132,26 @@ From here, click the bot square and generate a url. You can also set permissions
 ![working](https://imgur.com/KAIBhsi.png)<br>
 Copy this url into your web browser and add the bot to a server you manage<br>
 ![working](https://imgur.com/GA84dnX.png)<br>
+
+### Config File
+
+Now, it's time to configurate the bot. You've already changed the token, now it's time to imput the parameters to make the APIs work.<br>
+Open up the file 'config.json', this is the file we are changing.<br>
+
+Connect your lovense toys to Lovense Connect App for Android. Once connected, copy and paste this link into a web browser: https://api.lovense.com/api/lan/getToys <br>
+This returns a string of JSON that contains your domain, httpPort, and toyId. Copy then replace each 'domain' with your domain. Do the same for httpPort and your toyIds. <br>
+When complete, each link will have a unique domain, httpPort, and toyId unless you do not own the toy. <br>
+Save your config.json file and let's deploy the bot. <br>
+
+### Deploy the Bot
+
+Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (shift+LeftClick) if you have closed it. 
+
+This time, copy and paste the following in powershell:
+
+```
+node index.js
+```
+
+If done correctly, the bot should say "Ready!". Do not close the powershell window while the bot is operating.<br>
+Each time you want to run the bot, you must repeat the 'Deploy the bot' instructions and leave the powershell window open.<br>
