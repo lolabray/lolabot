@@ -29,7 +29,7 @@
 + [Getting Started](#getting_started)
 + [Deploying your own bot](#deployment)
 + [Built Using](#built_using)
-+ [TODO](https://github.com/lolabray/lolabot/blob/main/todo.md)
++ [TO-DO](https://github.com/lolabray/lolabot/blob/main/todo.md)
 + [Contributing](../CONTRIBUTING.md)
 + [Authors](#authors)
 + [Acknowledgments](#acknowledgement)
@@ -43,7 +43,7 @@ LolaBot was developed by a camgirl who was looking for a way to control her love
 
 ## 🎈 Usage <a name = "usage"></a>
 
-To use the bot, type:
+To use the bot, type into your discord server after installation:
 ```
 **LolaBot Commands:**
 
@@ -86,6 +86,7 @@ To use the bot, type:
 !lushgrind
 !lushstop
 ```
+
 ## 🏁 Getting Started <a name = "getting_started"></a>
 ### Installing <a name = "installing"></a>
 
@@ -96,11 +97,20 @@ You will need to download the code from GitHub, and open a powershell window (Sh
 ![working](https://imgur.com/pDFbcrt.gif)
 <br>
 
-In that powershell window, download discord js by typing:
+In that powershell window, download discord js by typing:<br>
 
-```npm install discord.js
 ```
-![working](https://imgur.com/IeITBJ0.gif)
+npm install discord.js
+
+```
+![working](https://imgur.com/IeITBJ0.gif)<br>
+
+Do the same for node-fetch by typing:<br>
+
+```
+npm install node-fetch
+
+```
 
 ## 🚀 Deploying your own bot <a name = "deployment"></a>
 Log onto the Discord Developer Portal: (https://discord.com/developers/applications) and create a new application.<br>
