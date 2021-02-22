@@ -158,9 +158,9 @@ If done correctly, the bot should say "Ready!". Do not close the powershell wind
 Each time you want to run the bot, you must repeat the 'Deploy the bot' instructions and leave the powershell window open.<br>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
-+ [node.js](https://praw.readthedocs.io/en/latest/) - Python Reddit API Wrapper
-+ [discord.js](https://www.heroku.com/) - SaaS hosting platform
-+ [node-fetch](https://www.)
++ [node.js](https://praw.readthedocs.io/en/latest/)
++ [discord.js](https://www.heroku.com/)
++ [node-fetch](https://www.https://github.com/node-fetch/node-fetch)
 + [Lovense LAN API](https://www.lovense.com/sextoys/developer)
 
 ## ✍️ Authors <a name = "authors"></a>
