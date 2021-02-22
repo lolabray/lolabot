@@ -4,6 +4,8 @@ All work that is currently planned for LolaBot:
 
 ### To-do:
 
+- [ ] iOS Specific Instructions
+- [ ] Detailed Wiki
 - [ ] Commands for all Lovense toys
 - [ ] Battery Life command
 - [ ] Bot Hosting
