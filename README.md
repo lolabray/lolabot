@@ -30,7 +30,7 @@
 + [Getting Started](#getting_started)
 + [Deploying your own bot](#deployment)
 + [Built Using](#built_using)
-+ [TODO](../TODO.md)
++ [TODO](../todo.md)
 + [Contributing](../CONTRIBUTING.md)
 + [Authors](#authors)
 + [Acknowledgments](#acknowledgement)
