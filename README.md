@@ -120,3 +120,5 @@ Go to OAuth2 on the Discord Developer Portal, located on the side panel under se
 
 From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.<br>
 ![working](https://imgur.com/KAIBhsi.png)<br>
+Copy this url into your web browser and add the bot to a server you manage<br>
+![working](https://imgur.com/GA84dnX.png)<br>
