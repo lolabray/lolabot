@@ -97,9 +97,12 @@ These instructions will get you a copy of the project up and running on your loc
 Install node.js at https://nodejs.org/en/
 
 You will need to download the code from GitHub, and open a powershell window (Shift+LeftClick) in the LolaBot main folder.
-<br>https://imgur.com/RnTtl5r.gif<br>
+<br>
+[!working](https://imgur.com/RnTtl5r.gif)
+<br>
 
 In that powershell window, download discord js by typing:
 
-```npm install discord.js
+```
+npm install discord.js
 ```
