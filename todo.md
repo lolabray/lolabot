@@ -14,6 +14,6 @@ All work that is currently planned for LolaBot:
 - [ ] Complete Readme.md with full instructions for LolaBot
 - [ ] Neater code, a command handler plus seperate files for commands
 
-### Done: ?
+### Done:
 
 - [x] Upload LolaBot code, start readme.md 
