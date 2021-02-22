@@ -99,6 +99,8 @@ You will need to download the code from GitHub, and open a powershell window (Sh
 
 In that powershell window, download discord js by typing:
 
-```npm install discord.js
+```
+npm install discord.js
+
 ```
 ![working](https://imgur.com/IeITBJ0.gif)
