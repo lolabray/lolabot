@@ -36,7 +36,54 @@
 
 ## 🧐 About <a name = "about"></a>
 LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server. 
-<br>LolaBot is contolled by text commands (example: !lushhigh) that activate the toys via the discord bot. 
+<br>LolaBot is contolled by text commands (example: !lushhigh) that active the toys via the discord bot. 
 
 ## 🎥 Demo <a name = "demo"></a>
 ![Working](https://imgur.com/DfSrJgF.gif)
+
+## 🎈 Usage <a name = "usage"></a>
+
+To use the bot, type:
+```
+**LolaBot Commands:**
+
+**Hush:**
+!hushlow 
+!hushmed 
+!hushhigh 
+!hushpulse 
+!hushcircle 
+!hushgrind
+!hushstop
+
+**Domi:**
+!domilow 
+!domimed 
+!domihigh 
+!domipulse 
+!domicircle 
+!domigrind
+!domistop
+
+**Nora:**
+!noralow 
+!noramed 
+!norahigh 
+!norapulse 
+!noracircle 
+!noragrind 
+!noraright
+!noraleft
+!norastopvibe
+!norastopturn
+
+**Lush**
+!lushlow
+!lushmed
+!lushhigh
+!lushpulse
+!lushcircle
+!lushgrind
+!lushstop
+```
+
