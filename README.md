@@ -19,7 +19,8 @@
 ---
 
 <p align="center"> The Discord Bot that controls your Lovense toys.
-    <br> Currently supports Lush, Nora, Hush and Domi.
+    <br> Currently supports Lush, Nora, Hush and Domi.<br>
+    Join the Discord server for support: (https://discord.gg/4VGtUNKrkT)
 </p>
 
 ## 📝 Table of Contents
@@ -92,7 +93,7 @@ To use the bot, type into your discord server after installation:
 
 Install node.js at https://nodejs.org/en/
 
-You will need to download the code from GitHub, and open a powershell window (Shift+LeftClick) in the LolaBot main folder.
+You will need to download the source code from GitHub, then open a powershell window (Shift+LeftClick) in the LolaBot main folder.
 <br>
 ![working](https://imgur.com/pDFbcrt.gif)
 <br>
@@ -155,3 +156,15 @@ node index.js
 
 If done correctly, the bot should say "Ready!". Do not close the powershell window while the bot is operating.<br>
 Each time you want to run the bot, you must repeat the 'Deploy the bot' instructions and leave the powershell window open.<br>
+
+## ⛏️ Built Using <a name = "built_using"></a>
++ [node.js](https://praw.readthedocs.io/en/latest/) - Python Reddit API Wrapper
++ [discord.js](https://www.heroku.com/) - SaaS hosting platform
++ [node-fetch](https://www.)
++ [Lovense LAN API](https://www.lovense.com/sextoys/developer)
+
+## ✍️ Authors <a name = "authors"></a>
++ [@lolabray](https://github.com/lolabray)
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
++ [Discord.Js Guide](https://discordjs.guide/)
