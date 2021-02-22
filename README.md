@@ -103,21 +103,20 @@ In that powershell window, download discord js by typing:
 ![working](https://imgur.com/IeITBJ0.gif)
 
 ## 🚀 Deploying your own bot <a name = "deployment"></a>
-Log onto the Discord Developer Portal: (https://discord.com/developers/applications) and create a new application. 
+Log onto the Discord Developer Portal: (https://discord.com/developers/applications) and create a new application.<br>
 
-![working](https://imgur.com/JS4TdZK.png)
+![working](https://imgur.com/JS4TdZK.png)<br>
 
-Set your photo, name your bot, add a description. 
-Select "Bot" on the side panel, under settings.
-![working](https://imgur.com/Etzf6RF.png)
-Click to find your token, copy this and add it to the file config.json that you downloaded. 
-![working](https://imgur.com/n0drNJW.png)
-![working]()
-Replace "YOUR-DISCORD-TOKEN" with the token you copied.
-![working](https://imgur.com/br2RKT8.png)
+Set your photo, name your bot, add a description.<br> 
+Select "Bot" on the side panel, under settings.<br>
+![working](https://imgur.com/Etzf6RF.png)<br>
+Click to find your token, copy this and add it to the file config.json that you downloaded.<br> 
+![working](https://imgur.com/n0drNJW.png)<br>
+Replace "YOUR-DISCORD-TOKEN" with the token you copied.<br>
+![working](https://imgur.com/br2RKT8.png)<br>
 
-Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.
-![working](https://imgur.com/pE3KbZv.png)
+Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
+![working](https://imgur.com/pE3KbZv.png)<br>
 
-From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.
-![working](https://imgur.com/KAIBhsi/png)
+From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.<br>
+![working](https://imgur.com/KAIBhsi/png)<br>
