@@ -106,3 +106,4 @@ In that powershell window, download discord js by typing:
 ```
 npm install discord.js
 ```
+![working](https://imgur.com/IeITBJ0.gif)
