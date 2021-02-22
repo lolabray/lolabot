@@ -96,7 +96,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Install node.js at https://nodejs.org/en/
 
-You will need to download the code from GitHub, and open a powershell window (Shift+LeftClick) in the LolaBot main folder.
+You will need to download the LolaBot source code from GitHub, and open a powershell window (Shift+LeftClick) in the LolaBot main folder that you downloaded.
 <br>
 ![working](https://imgur.com/pDFbcrt.gif)
 <br>
