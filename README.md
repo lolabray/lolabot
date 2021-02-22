@@ -37,7 +37,7 @@
 
 ## 🧐 About <a name = "about"></a>
 LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server. 
-<br>LolaBot is contolled by text commands (example: !lushhigh) that active the toys via the discord bot. 
+<br>LolaBot is contolled by text commands (example: !lushhigh) that activate the toys via the discord bot. 
 
 ## 🎥 Demo <a name = "demo"></a>
 ![Working](https://imgur.com/DfSrJgF.gif)
@@ -94,14 +94,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing <a name = "installing"></a>
 
-Install node.js at https://nodejs.org/en/(https://nodejs.org/en/)
+Install node.js at https://nodejs.org/en/
 
 You will need to download the code from GitHub, and open a powershell window (Shift+LeftClick) in the LolaBot main folder.
-<br> (https://imgur.com/a/RnTtl5r.gif)<br><br>
+<br>https://imgur.com/a/RnTtl5r.gif<br><br>
 
 In that powershell window, download discord js by typing:
 
-```
-npm install discord.js
-
+```npm install discord.js
 ```
