@@ -119,4 +119,4 @@ Go to OAuth2 on the Discord Developer Portal, located on the side panel under se
 ![working](https://imgur.com/pE3KbZv.png)<br>
 
 From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.<br>
-![working](https://imgur.com/KAIBhsi/png)<br>
+![working](https://imgur.com/KAIBhsi.png)<br>
