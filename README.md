@@ -97,7 +97,7 @@ You will need to download the code from GitHub, and open a powershell window (Sh
 ![working](https://imgur.com/pDFbcrt.gif)
 <br>
 
-In that powershell window, download discord js by typing:<br>
+In that powershell window, download discord js by typing 'npm install discord.js' then hitting enter:<br>
 
 ```
 npm install discord.js
@@ -105,7 +105,7 @@ npm install discord.js
 ```
 ![working](https://imgur.com/IeITBJ0.gif)<br>
 
-Do the same for node-fetch by typing:<br>
+Do the same for node-fetch by typing 'npm install node-fetch' and hitting enter<br>
 
 ```
 npm install node-fetch
