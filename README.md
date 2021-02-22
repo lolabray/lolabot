@@ -27,6 +27,7 @@
 + [Demo](#demo)
 + [Usage](#usage)
 + [Getting Started](#getting_started)
++ [Installing](#installing)
 + [Deploying your own bot](#deployment)
 + [Built Using](#built_using)
 + [TODO](../TODO.md)
@@ -87,3 +88,20 @@ To use the bot, type:
 !lushstop
 ```
 
+## 🏁 Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of the project up and running on your local machine. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+
+### Installing <a name = "installing"></a>
+
+Install node.js at https://nodejs.org/en/(https://nodejs.org/en/)
+
+You will need to download the code from GitHub, and open a powershell window (Shift+LeftClick) in the LolaBot main folder.
+<br> (https://imgur.com/a/RnTtl5r.gif)<br><br>
+
+In that powershell window, download discord js by typing:
+
+```
+npm install discord.js
+
+```
