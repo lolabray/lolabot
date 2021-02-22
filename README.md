@@ -21,3 +21,16 @@
 <p align="center"> The Discord Bot that controls your Lovense toys.
     <br> Currently supports Lush, Nora, Hush and Domi.
 </p>
+
+## 📝 Table of Contents
++ [About](#about)
++ [Demo / Working](#demo)
++ [How it works](#working)
++ [Usage](#usage)
++ [Getting Started](#getting_started)
++ [Deploying your own bot](#deployment)
++ [Built Using](#built_using)
++ [TODO](../TODO.md)
++ [Contributing](../CONTRIBUTING.md)
++ [Authors](#authors)
++ [Acknowledgments](#acknowledgement)
