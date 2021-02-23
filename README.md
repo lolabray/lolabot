@@ -31,7 +31,6 @@
 + [Deploying your own bot](#deployment)
 + [Built Using](#built_using)
 + [TO-DO](https://github.com/lolabray/lolabot/blob/main/todo.md)
-+ [Contributing](../CONTRIBUTING.md)
 + [Authors](#authors)
 + [Acknowledgments](#acknowledgement)
 
@@ -162,6 +161,28 @@ Each time you want to run the bot, you must repeat the 'Deploy the bot' instruct
 + [discord.js](https://www.heroku.com/)
 + [node-fetch](https://www.https://github.com/node-fetch/node-fetch)
 + [Lovense LAN API](https://www.lovense.com/sextoys/developer)
+
+## TO-DO for LolaBot
+
+All work that is currently planned for LolaBot:
+
+### To-do:
+
+- [ ] iOS Specific Instructions
+- [ ] Detailed Wiki
+- [ ] Commands for all Lovense toys
+- [ ] Battery Life command
+- [ ] Bot Hosting
+- [ ] Ability to change parameters (toyId, domain/port) via discord commands
+
+### In Progress:
+
+- [ ] Complete Readme.md with full instructions for LolaBot
+- [ ] Neater code, a command handler plus seperate files for commands
+
+### Done:
+
+- [x] Upload LolaBot code, start readme.md 
 
 ## ✍️ Authors <a name = "authors"></a>
 + [@lolabray](https://github.com/lolabray)
