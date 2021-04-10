@@ -167,6 +167,29 @@ Each time you want to run the bot, you must repeat the 'Deploy the bot' instruct
 + [node-fetch](https://www.https://github.com/node-fetch/node-fetch)
 + [Lovense LAN API](https://www.lovense.com/sextoys/developer)
 
+# TO-DO for LolaBot
+
+All work that is currently planned for LolaBot:
+
+### To-do:
+
+- [ ] iOS Specific Instructions
+- [ ] Detailed Wiki
+- [ ] Commands for all Lovense toys
+- [ ] Battery Life command
+- [ ] Bot Hosting
+- [ ] Explore possibility of using different brand of toys
+
+### In Progress:
+- [ ] Upload pre-release of new LolaBot code
+- [ ] Complete new Readme.md with full instructions for LolaBot
+- [ ] In pre-release: Ability to change parameters (toyId, domain/port) via discord commands
+
+### Done:
+
+- [x] Upload LolaBot code, start readme.md 
+- [x] Neater code, a command handler plus seperate files for commands
+
 ## ✍️ Authors <a name = "authors"></a>
 + [@lolabray](https://github.com/lolabray) 
 + Tom, the LolaBot 2.0 author
