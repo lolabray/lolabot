@@ -13,7 +13,7 @@
   [![GitHub Issues](https://img.shields.io/github/issues/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/pulls)
   [![License](https://img.shields.io/github/license/lolabray/lolabot?style=for-the-badge)](/LICENSE)
-
+[VERSION 2 NOW IN PRE-RELEASE](https://github.com/lolabray/lolabot/tree/LolaBot2.0)
 </div>
 
 ---
@@ -22,7 +22,7 @@
     <br> Currently supports Lush, Nora, Hush and Domi.<br>
     Join the Discord server for support: (https://discord.gg/4VGtUNKrkT) <br> </p>
     
-    [VERSION 2 NOW IN PRE-RELEASE](https://github.com/lolabray/lolabot/tree/LolaBot2.0 "LolaBot 2.0")
+    
 
 ## 📝 Table of Contents
 + [About](#about)
