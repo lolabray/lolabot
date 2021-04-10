@@ -19,5 +19,12 @@
     "url":"https://0-0-0-00.lovense.club",
     "httpPort":"xxxxx",
     "commands":"low,med,high,stop,circle,pulse,grind"
+  },
+  {
+    "deviceName":"lush",
+    "toyid":"xxxxxxxxxxxx",
+    "url":"https://0-0-0-00.lovense.club",
+    "httpPort":"xxxxx",
+    "commands":"low,med,high,stop,circle,pulse,grind"
   }
 ]
