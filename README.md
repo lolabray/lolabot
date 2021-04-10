@@ -126,7 +126,7 @@ Select "Bot" on the side panel, under settings.<br>
 Click to find your token, copy this and add it to the file config.json that you downloaded.<br> 
 ![working](https://imgur.com/n0drNJW.png)<br>
 Replace "YOUR-DISCORD-TOKEN" with the token you copied.<br>
-You can also update your "Main User" while you are there with your discord username and tag, as well as your prefix and default duration if desired.<br>
+Also, update your "Main User" while you are there with your discord username and tag, as well as your prefix and default duration if desired.<br>
 ![working](https://imgur.com/br2RKT8.png)<br>
 
 Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
@@ -140,7 +140,7 @@ Copy this url into your web browser and add the bot to a server you manage<br>
 ### Devices File
 
 Now, it's time to configurate the devices. Open devices.json, this is the file you will be editing.<br>
-
+![working](https://imgur.com/96NHsrc.png)<br>
 Connect your lovense toys to Lovense Connect App for Android. Once connected, copy and paste this link into a web browser: https://api.lovense.com/api/lan/getToys <br>
 This returns a string of JSON that contains your domain, httpPort, and toyId. Copy then replace each 'domain' with your domain. Do the same for httpPort and your toyIds. <br>
 When complete, each link will have a unique domain, httpPort, and toyId unless you do not own the toy. <br>
