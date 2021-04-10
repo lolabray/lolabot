@@ -20,7 +20,7 @@
 
 <p align="center"> The Discord Bot that controls your Lovense toys.
     <br> Currently supports Lush, Nora, Hush and Domi.<br>
-    Join the Discord server for support: (https://discord.gg/4VGtUNKrkT)
+    Join the Discord server for support: (https://discord.gg/4VGtUNKrkT) <br>
   [VERSION 2 NOW IN PRE-RELEASE](https://github.com/lolabray/lolabot/tree/LolaBot2.0 "LolaBot 2.0")
   
 </p>
