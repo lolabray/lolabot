@@ -30,61 +30,64 @@
 + [Getting Started](#getting_started)
 + [Deploying your own bot](#deployment)
 + [Built Using](#built_using)
-+ [TO-DO](https://github.com/lolabray/lolabot/blob/main/todo.md)
++ [TO-DO](https://github.com/lolabray/lolabot/blob/LolaBot2.0/todo.md)
++ [Contributing](../CONTRIBUTING.md)
 + [Authors](#authors)
 + [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server. 
-<br>LolaBot is contolled by text commands (example: !lushhigh) that activate the toys via the discord bot. 
+LolaBot was originally developed by a camgirl who was looking for a way to control her lovense toys in her discord server. 
+<br>LolaBot is contolled by text commands (example: !hush high 100) that activate the toys via the discord bot. 
 
 ## 🎥 Demo <a name = "demo"></a>
-![Working](https://imgur.com/DfSrJgF.gif)
+![Working](https://imgur.com/xaBGYNU.gif)
 
 ## 🎈 Usage <a name = "usage"></a>
 
 To use the bot, type into your discord server after installation:
+Duration in seconds, can leave blank for a continuous command (ex: !hush high)
+
 ```
 **LolaBot Commands:**
 
 **Hush:**
-!hushlow 
-!hushmed 
-!hushhigh 
-!hushpulse 
-!hushcircle 
-!hushgrind
-!hushstop
+!hush low <duration>
+!hush med <duration>
+!hush high <duration>
+!hush pulse <duration>
+!hush circle <duration>
+!hush grind <duration>
+!hush stop
 
 **Domi:**
-!domilow 
-!domimed 
-!domihigh 
-!domipulse 
-!domicircle 
-!domigrind
-!domistop
+!domi low <duration>
+!domi med <duration>
+!domi high <duration>
+!domi pulse <duration>
+!domi circle <duration>
+!domi grind <duration>
+!domi stop 
 
 **Nora:**
-!noralow 
-!noramed 
-!norahigh 
-!norapulse 
-!noracircle 
-!noragrind 
-!noraright
-!noraleft
-!norastopvibe
-!norastopturn
+!nora low <duration>
+!nora med <duration>
+!nora high <duration>
+!nora pulse <duration>
+!nora circle <duration>
+!nora grind <duration>
+!nora right <duration>
+!nora left <duration>
+!nora stop 
+!nora stopturn 
 
 **Lush**
-!lushlow
-!lushmed
-!lushhigh
-!lushpulse
-!lushcircle
-!lushgrind
-!lushstop
+!lush low <duration>
+!lush med <duration>
+!lush high <duration>
+!lush pulse <duration>
+!lush circle <duration>
+!lush grind <duration>
+!lush stop
 ```
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -123,6 +126,7 @@ Select "Bot" on the side panel, under settings.<br>
 Click to find your token, copy this and add it to the file config.json that you downloaded.<br> 
 ![working](https://imgur.com/n0drNJW.png)<br>
 Replace "YOUR-DISCORD-TOKEN" with the token you copied.<br>
+You can also update your "Main User" while you are there with your discord username and tag, as well as your prefix and default duration if desired.<br>
 ![working](https://imgur.com/br2RKT8.png)<br>
 
 Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
@@ -133,15 +137,15 @@ From here, click the bot square and generate a url. You can also set permissions
 Copy this url into your web browser and add the bot to a server you manage<br>
 ![working](https://imgur.com/GA84dnX.png)<br>
 
-### Config File
+### Devices File
 
-Now, it's time to configurate the bot. You've already changed the token, now it's time to imput the parameters to make the APIs work.<br>
-Open up the file 'config.json', this is the file we are changing.<br>
+Now, it's time to configurate the devices. Open devices.json, this is the file you will be editing.<br>
 
 Connect your lovense toys to Lovense Connect App for Android. Once connected, copy and paste this link into a web browser: https://api.lovense.com/api/lan/getToys <br>
 This returns a string of JSON that contains your domain, httpPort, and toyId. Copy then replace each 'domain' with your domain. Do the same for httpPort and your toyIds. <br>
 When complete, each link will have a unique domain, httpPort, and toyId unless you do not own the toy. <br>
-Save your config.json file and let's deploy the bot. <br>
+Create additional devices by copying and pasting, changing the device name and adding in all the parameters.<br>
+Save your devices.json file and let's deploy the bot. <br>
 
 ### Deploy the Bot
 
@@ -152,8 +156,9 @@ This time, copy and paste the following in powershell:
 ```
 node index.js
 ```
+![working](https://imgur.com/QxqzCFY.png)<br>
 
-If done correctly, the bot should say "Ready!". Do not close the powershell window while the bot is operating.<br>
+If done correctly, the bot should say "LolaBot 2.0 Ready to Play!". Do not close the powershell window while the bot is operating.<br>
 Each time you want to run the bot, you must repeat the 'Deploy the bot' instructions and leave the powershell window open.<br>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
@@ -162,30 +167,9 @@ Each time you want to run the bot, you must repeat the 'Deploy the bot' instruct
 + [node-fetch](https://www.https://github.com/node-fetch/node-fetch)
 + [Lovense LAN API](https://www.lovense.com/sextoys/developer)
 
-## TO-DO for LolaBot
-
-All work that is currently planned for LolaBot:
-
-### To-do:
-
-- [ ] iOS Specific Instructions
-- [ ] Detailed Wiki
-- [ ] Commands for all Lovense toys
-- [ ] Battery Life command
-- [ ] Bot Hosting
-- [ ] Ability to change parameters (toyId, domain/port) via discord commands
-
-### In Progress:
-
-- [ ] Complete Readme.md with full instructions for LolaBot
-- [ ] Neater code, a command handler plus seperate files for commands
-
-### Done:
-
-- [x] Upload LolaBot code, start readme.md 
-
 ## ✍️ Authors <a name = "authors"></a>
-+ [@lolabray](https://github.com/lolabray)
++ [@lolabray](https://github.com/lolabray) 
++ Tom, the LolaBot 2.0 author
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 + [Discord.Js Guide](https://discordjs.guide/)
