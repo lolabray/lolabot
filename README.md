@@ -95,8 +95,8 @@ To use the bot, type into your discord server after installation:
 
 2) Next, You will need to download the source code from GitHub, then open a powershell window (Shift+LeftClick) in the LolaBot main folder.
 <br>
-
-![Working](https://imgur.com/pDFbcrt.gif)<br>
+![working](https://imgur.com/pDFbcrt.gif)
+<br>
 
 3) In that powershell window, download discord js by typing 'npm install discord.js' then hitting enter:<br>
 
@@ -104,7 +104,7 @@ To use the bot, type into your discord server after installation:
 npm install discord.js
 
 ```
-![Working](https://imgur.com/IeITBJ0.gif)<br>
+![working](https://imgur.com/IeITBJ0.gif)<br>
 
 4) Next, download the next three libraries in powershell (this will make deploy-commands.js work) by typing in 'npm install @discordjs/builders @discordjs/rest discord-api-types' then hitting enter: <br>
 ```
@@ -128,8 +128,14 @@ Select "Bot" on the side panel, under settings.<br>
 ![working](https://imgur.com/Etzf6RF.png)<br>
 Click to find your token, copy this and add it to the file config.json that you downloaded.<br> 
 ![working](https://imgur.com/n0drNJW.png)<br>
-Replace "YOUR-DISCORD-TOKEN" with the token you copied.<br>
+Replace "YOUR-DISCORD-TOKEN" in config.json, with the token you copied.<br>
 ![working](https://imgur.com/br2RKT8.png)<br>
+
+Next find your guild ID, which will also need to be replaced in config.json by:
+Turning on developer mode on your Discord client, under Settings/Advanced. 
+
+![working](https://imgur.com/vyvqNW3.png)<br>
+Once developer mode is on, left click on the server/channel your bot is joining and copy ID (bottom of menu). This is your guild ID. 
 
 Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
 ![working](https://imgur.com/pE3KbZv.png)<br>
@@ -138,6 +144,8 @@ From here, click the bot square and generate a url. You can also set permissions
 ![working](https://imgur.com/KAIBhsi.png)<br>
 Copy this url into your web browser and add the bot to a server you manage<br>
 ![working](https://imgur.com/GA84dnX.png)<br>
+
+Last, find your client ID by left clicking on the bot (once it's added in the previous step), going to 'copy ID' and replace in config.json.
 
 Additional resources: [Discord.Js Guide](https://discordjs.guide/)
 
