@@ -95,8 +95,8 @@ To use the bot, type into your discord server after installation:
 
 2) Next, You will need to download the source code from GitHub, then open a powershell window (Shift+LeftClick) in the LolaBot main folder.
 <br>
-![working](https://imgur.com/pDFbcrt.gif)
-<br>
+
+![working](https://imgur.com/pDFbcrt.gif)<br>
 
 3) In that powershell window, download discord js by typing 'npm install discord.js' then hitting enter:<br>
 
