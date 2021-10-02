@@ -95,7 +95,7 @@ To use the bot, type into your discord server after installation:
 
 2) Next, You will need to download the source code from GitHub, then open a powershell window (Shift+LeftClick) in the LolaBot main folder.
 <br>
-![working](https://imgur.com/pDFbcrt.gif)
+![Working](https://imgur.com/pDFbcrt.gif)
 <br>
 
 3) In that powershell window, download discord js by typing 'npm install discord.js' then hitting enter:<br>
@@ -104,7 +104,7 @@ To use the bot, type into your discord server after installation:
 npm install discord.js
 
 ```
-![working](https://imgur.com/IeITBJ0.gif)<br>
+![Working](https://imgur.com/IeITBJ0.gif)<br>
 
 4) Next, download the next three libraries in powershell (this will make deploy-commands.js work) by typing in 'npm install @discordjs/builders @discordjs/rest discord-api-types' then hitting enter: <br>
 ```
