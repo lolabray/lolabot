@@ -13,7 +13,7 @@
   [![GitHub Issues](https://img.shields.io/github/issues/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/pulls)
   [![License](https://img.shields.io/github/license/lolabray/lolabot?style=for-the-badge)](/LICENSE) <br>
-[VERSION 2 NOW DEPRCIATED, BUT WILL BE UPDATED SOON](https://github.com/lolabray/lolabot/tree/LolaBot2.0)
+[VERSION 2 NOW DEPRECIATED, BUT WILL BE UPDATED SOON](https://github.com/lolabray/lolabot/tree/LolaBot2.0)
 </div>
 
 ---
