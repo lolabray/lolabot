@@ -21,8 +21,8 @@
 <p align="center"> The Discord Bot that controls your Lovense toys.
     <br> Currently supports Lush, Nora, Hush and Domi (Support for other lovense brand toys IS POSSIBLE)<br>
     Join the Discord server for support: (https://discord.gg/4VGtUNKrkT) <br> </p>
-    
-    
+
+
 
 ## 📝 Table of Contents
 + [About](#about)
@@ -36,8 +36,8 @@
 + [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server. 
-<br>LolaBot is contolled by slash commands (example: /lushhigh) that activate the toys via the discord bot. 
+LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server.
+<br>LolaBot is contolled by slash commands (example: /lushhigh) that activate the toys via the discord bot.
 
 ## 🎥 Demo <a name = "demo"></a>
 ![Working](https://imgur.com/nUtBui4.gif)
@@ -49,30 +49,30 @@ To use the bot, type into your discord server after installation:
 **LolaBot Commands:**
 
 **Hush:**
-/hushlow 
-/hushmed 
-/hushhigh 
-/hushpulse 
-/hushcircle 
+/hushlow
+/hushmed
+/hushhigh
+/hushpulse
+/hushcircle
 /hushgrind
 /hushstop
 
 **Domi:**
-/domilow 
-/domimed 
-/domihigh 
-/domipulse 
-/domicircle 
+/domilow
+/domimed
+/domihigh
+/domipulse
+/domicircle
 /domigrind
 /domistop
 
 **Nora:**
-/noralow 
-/noramed 
-/norahigh 
-/norapulse 
-/noracircle 
-/noragrind 
+/noralow
+/noramed
+/norahigh
+/norapulse
+/noracircle
+/noragrind
 /noraright
 /noraleft
 /norastopvibe
@@ -91,31 +91,25 @@ To use the bot, type into your discord server after installation:
 ## 🏁 Getting Started <a name = "getting_started"></a>
 ### Installing <a name = "installing"></a>
 
-1) Install node.js at https://nodejs.org/en/
+1) Install node.js at https://nodejs.org/en/ (I recommend downloading the latest version of v16)
 
-2) Next, You will need to download the source code from GitHub, then open a powershell window (Shift+LeftClick) in the LolaBot main folder.
+2) Next, You will need to download the source code from GitHub.
+- This can be done either via the Green **Code** Button and clicking Download ZIP, and Extracting the contents where you'd like
+- OR download using Git, if this is installed, by running `git clone https://github.com/lolabray/lolabot.git`
+
+3) Then open a powershell window (Shift+LeftClick) in the LolaBot main folder.
 <br>
 
 ![working](https://imgur.com/pDFbcrt.gif)<br>
 
-3) In that powershell window, download discord js by typing 'npm install discord.js' then hitting enter:<br>
+3) In that powershell window, download all the required packages for this to work. This includes some stuff for Discord and basic Web requests:<br>
 
 ```
-npm install discord.js
+npm install.
 
 ```
 ![working](https://imgur.com/IeITBJ0.gif)<br>
 
-4) Next, download the next three libraries in powershell (this will make deploy-commands.js work) by typing in 'npm install @discordjs/builders @discordjs/rest discord-api-types' then hitting enter: <br>
-```
-npm install @discordjs/builders @discordjs/rest discord-api-types
-```
-
-5) Do the same for node-fetch by typing 'npm install node-fetch' and hitting enter<br>
-
-```
-npm install node-fetch
-```
 Additional resources: [Discord.Js Guide](https://discordjs.guide/)
 
 ## 🚀 Deploying your own bot <a name = "deployment"></a>
@@ -123,19 +117,19 @@ Log onto the Discord Developer Portal: (https://discord.com/developers/applicati
 
 ![working](https://imgur.com/JS4TdZK.png)<br>
 
-Set your photo, name your bot, add a description.<br> 
+Set your photo, name your bot, add a description.<br>
 Select "Bot" on the side panel, under settings.<br>
 ![working](https://imgur.com/Etzf6RF.png)<br>
-Click to find your token, copy this and add it to the file config.json that you downloaded.<br> 
+Click to find your token, copy this and add it to the file config.json that you downloaded.<br>
 ![working](https://imgur.com/n0drNJW.png)<br>
 Replace "YOUR-DISCORD-TOKEN" in config.json, with the token you copied.<br>
 ![working](https://imgur.com/br2RKT8.png)<br>
 
 Next find your guild ID, which will also need to be replaced in config.json by:
-Turning on developer mode on your Discord client, under Settings/Advanced. 
+Turning on developer mode on your Discord client, under Settings/Advanced.
 
 ![working](https://imgur.com/vyvqNW3.png)<br>
-Once developer mode is on, left click on the server/channel your bot is joining and copy ID (bottom of menu). This is your guild ID. 
+Once developer mode is on, left click on the server/channel your bot is joining and copy ID (bottom of menu). This is your guild ID.
 
 Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
 ![working](https://imgur.com/pE3KbZv.png)<br>
@@ -159,22 +153,22 @@ This returns a string of JSON that contains your domain, httpPort, and toyId. Co
 When complete, each link will have a unique domain, httpsPort, and toyId unless you do not own the toy. <br>
 Save your config.json file and let's deploy the bot. <br>
 
-**New**: If you would like to connect your toys via the lovense usb dongle for PC, you need to edit the API links in the config file. Remove the "A" before Vibrate/Rotate in each link in the config file. When you are done each link should look like: 
+**New**: If you would like to connect your toys via the lovense usb dongle for PC, you need to edit the API links in the config file. Remove the "A" before Vibrate/Rotate in each link in the config file. When you are done each link should look like:
 
 ```
 https://{domain}:{httpsPort}/Vibrate?v=speed&t=toyId or https://{domain}:{httpsPort}/RotateClockwise?v=speed&t=toyId
 ```
 ### Deploy the Bot
 
-1) Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (shift+LeftClick) if you have closed it. 
+1) Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (shift+LeftClick) if you have closed it.
 
 	This time, copy and paste the following in powershell:
 	```
 	node deploy-commands.js
 	```
-	This should reply with 'Successfully registered slash commands.' This will need to be repeated each time the 			deploy-commands.js file is changed to add/remove commands. 
+	This should reply with 'Successfully registered slash commands.' This will need to be repeated each time the 			deploy-commands.js file is changed to add/remove commands.
 
-2)	Next, deploy the bot with 'node index.js', this will be how you start the bot each time. 
+2)	Next, deploy the bot with 'node index.js', this will be how you start the bot each time.
 
 	```
 	node index.js
@@ -209,7 +203,7 @@ All work that is currently planned for LolaBot:
 ### Done:
 
 - [x] Complete Readme.md with full instructions for LolaBot
-- [x] Upload LolaBot code, start readme.md 
+- [x] Upload LolaBot code, start readme.md
 
 ## ✍️ Authors <a name = "authors"></a>
 + [@lolabray](https://github.com/lolabray)
