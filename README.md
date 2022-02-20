@@ -13,14 +13,13 @@
   [![GitHub Issues](https://img.shields.io/github/issues/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/pulls)
   [![License](https://img.shields.io/github/license/lolabray/lolabot?style=for-the-badge)](/LICENSE) <br>
-[VERSION 2 NOW DEPRECIATED, BUT WILL BE UPDATED SOON](https://github.com/lolabray/lolabot/tree/LolaBot2.0)
 </div>
 
 ---
 
 <p align="center"> The Discord Bot that controls your Lovense toys.
-    <br> Currently supports Lush, Nora, Hush and Domi (Support for other lovense brand toys IS POSSIBLE)<br>
-    Join the Discord server for support: (https://discord.gg/4VGtUNKrkT) <br> </p>
+    <br> Currently supports *most* Lovense brand toys<br>
+    Join the Discord server for support or to contribute to the bot: (https://discord.gg/4VGtUNKrkT) <br> </p>
 
 
 
@@ -37,7 +36,7 @@
 
 ## 🧐 About <a name = "about"></a>
 LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server.
-<br>LolaBot is contolled by slash commands (example: /lushhigh) that activate the toys via the discord bot.
+<br>LolaBot is contolled by slash commands (example: /high) that activate the toys via the discord bot.
 
 ## 🎥 Demo <a name = "demo"></a>
 ![Working](https://i.imgur.com/RgKnOGj.gif)
@@ -126,23 +125,8 @@ Last, find your client ID by left clicking on the bot (once it's added in the pr
 
 Additional resources: [Discord.Js Guide](https://discordjs.guide/)
 
-<!-- ### Config File
-
-Now, it's time to configurate the bot. You've already changed the token, now it's time to input the parameters to make the APIs work.<br>
-Open up the file 'config.json', this is the file we are changing.<br>
-
-Connect your lovense toys to Lovense Connect App for Android. Once connected, copy and paste this link into a web browser: https://api.lovense.com/api/lan/getToys <br>
-This returns a string of JSON that contains your domain, httpPort, and toyId. Copy then replace each 'domain' with your domain. Do the same for httpsPort and your toyIds. <br>
-When complete, each link will have a unique domain, httpsPort, and toyId unless you do not own the toy. <br>
-Save your config.json file and let's deploy the bot. <br>
-
-**New**: If you would like to connect your toys via the lovense usb dongle for PC, you need to edit the API links in the config file. Remove the "A" before Vibrate/Rotate in each link in the config file. When you are done each link should look like:
-
-```
-https://{domain}:{httpsPort}/Vibrate?v=speed&t=toyId or https://{domain}:{httpsPort}/RotateClockwise?v=speed&t=toyId
-``` -->
 ### Deploy the Bot
-Deploying the bot will create the commands based upon which toys which are avalaible within the app (even if they're not online). So if you have added more toys to your collection, please re-run this command and it will add them to
+Deploying the bot will create the commands based upon which toys which are available within the app (even if they're not online). So if you have added more toys to your collection, please re-run this command and it will add them too. 
 
 1) Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (shift+LeftClick) if you have closed it.
 
