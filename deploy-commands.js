@@ -21,7 +21,15 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
 
   var keys = Object.keys(lovenseConfig);
   if (keys.length === 0) {
-    console.error("No information found in LovenseConfig file");
+    console.error("No information found in Lovense Config");
+    console.error(
+      "Please check you are running the Lovesense CONNECT (not remote) App on your Phone or Desktop PC."
+    );
+    console.error(
+      "Please also check that you can see information returned from: https://api.lovense.com/api/lan/getToys website."
+    );
+    console.error("");
+
     process.exit(1);
   } else if (keys.length > 1) {
     console.error(
@@ -39,14 +47,19 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
   console.log("Device:        " + lovenseDetails.platform);
   console.log("Toys:");
   for (const [_id, toyDetails] of Object.entries(lovenseDetails.toys)) {
+    var nickname =
+      toyDetails.nickName !== ""
+        ? `${toyDetails.nickName} - (${toyDetails.name})`
+        : toyDetails.name;
+
     console.log(
-      `${toyDetails.nickName}: (${toyDetails.id})  ` +
+      `${nickname}: (${toyDetails.id})  ` +
         `[Version: ${toyDetails.version}] [Battery: ${toyDetails.battery}] - ` +
         `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
     );
 
     toyValues.push({
-      name: toyDetails.nickName,
+      name: nickname,
       safeName: toyDetails.name,
       value: toyDetails.id,
     });
@@ -135,8 +148,9 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
   // Presets, Only avaliable on specific toys.
 
   var presetToys = toyValuesPlusAll.filter((a) => {
-    ["lush", "hush", "ambi", "edge", "domi", "osci", "ALL"]
-      .indexOf(a.safeName) !== -1;
+    ["lush", "hush", "ambi", "edge", "domi", "osci", "ALL"].indexOf(
+      a.safeName
+    ) !== -1;
   });
   if (presetToys.length > 0) {
     commands.push(
