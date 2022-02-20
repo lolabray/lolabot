@@ -3,6 +3,6 @@
 	"guildId"	: "YOUR-GUILD-ID",
 	"token"		: "YOUR-DISCORD-BOT-TOKEN",
 	
-	"config_domain"	: "If it Fails to find Toys",
-	"config_port"	: "Manually get the Port and Domain for this."
+	"config_domain"	: "",
+	"config_port"	: ""
 }
