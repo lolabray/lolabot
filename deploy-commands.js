@@ -212,7 +212,7 @@ function registerCommands(toyValues) {
   // Presets, Only avaliable on specific toys.
 
   var presetToys = toyValuesPlusAll.filter((a) => {
-    ["lush", "hush", "ambi", "edge", "domi", "osci", "ALL"].indexOf(
+    return ["lush", "hush", "ambi", "edge", "domi", "osci", "ALL"].indexOf(
       a.safeName.toLowerCase()
     ) !== -1;
   });
@@ -254,7 +254,7 @@ function registerCommands(toyValues) {
   }
 
   var noraToys = toyValuesPlusAll.filter((a) => {
-    ["nora"].indexOf(a.safeName.toLowerCase()) !== -1;
+    return ["nora"].indexOf(a.safeName.toLowerCase()) !== -1;
   });
   if (noraToys.length > 0) {
     commands.push(
