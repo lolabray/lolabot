@@ -4,8 +4,28 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
+const returnMessages = [
+  "Spank me!",
+  "I love when you play with me",
+  "Oh baby, that feels good",
+  "Keep going harder.",
+  "This feels amazing.",
+  "Right there!!",
+  "Harder, baby.",
+  "Mmmmmmm!",
+  "You make me so wet!",
+  "I wish you were fucking me",
+  "Send me over the edge",
+  "Give me more",
+  "Fuck my tight ass",
+  "Make me cum!",
+  "I want more",
+  "It feels so good",
+  "Make me squirt!",
+];
+
 var avalaibleToys = [];
-var domain, port;
+var domain, port, platform;
 
 // replace with fetch.
 fetch("https://api.lovense.com/api/lan/getToys")
@@ -14,7 +34,14 @@ fetch("https://api.lovense.com/api/lan/getToys")
 
     var keys = Object.keys(lovenseConfig);
     if (keys.length === 0) {
-      console.error("No information found in LovenseConfig file");
+      console.error("No information found in Lovense Config");
+      console.error(
+        "Please check you are running the Lovesense CONNECT (not remote) App on your Phone or Desktop PC."
+      );
+      console.error(
+        "Please also check that you can see information returned from: https://api.lovense.com/api/lan/getToys website."
+      );
+      console.error("");
       process.exit(1);
     } else if (keys.length > 1) {
       console.error(
@@ -26,15 +53,21 @@ fetch("https://api.lovense.com/api/lan/getToys")
     domain = keys[0];
     var lovenseDetails = lovenseConfig[domain];
     port = lovenseDetails.httpsPort;
+    platform = lovenseDetails.platform;
 
     console.log("Lovense Details: ");
     console.log("Domain:        " + domain);
     console.log("Port (Secure): " + port);
-    console.log("Device:        " + lovenseDetails.platform);
+    console.log("Device:        " + platform);
     console.log("Toys:");
     for (const [toyId, toyDetails] of Object.entries(lovenseDetails.toys)) {
+      var nickname =
+        toyDetails.nickName !== ""
+          ? `${toyDetails.nickName} - (${toyDetails.name})`
+          : toyDetails.name;
+
       console.log(
-        `${toyDetails.nickName}: (${toyDetails.id})  [Version: ${
+        `${nickname}: (${toyDetails.id})  [Version: ${
           toyDetails.version
         }] [Battery: ${toyDetails.battery}]     ${
           toyDetails.status === 1 ? "Connected" : "Disconnected"
@@ -42,7 +75,7 @@ fetch("https://api.lovense.com/api/lan/getToys")
       );
 
       avalaibleToys.push({
-        toy: toyDetails.name,
+        toy: nickname,
         nickName: toyDetails.nickName,
         id: toyDetails.id,
       });
@@ -74,14 +107,20 @@ fetch("https://api.lovense.com/api/lan/getToys")
           break;
 
         case "battery":
+          // "Bot" is thinking...
+          // We need to "edit" the reply afterwards
           await interaction.deferReply();
+
           await fetch(lovenseUrl("Battery", { t: options.getString("toy") }))
-            .then((value) => {
-              // Return with the value.
-              interaction.reply("Success");
+            .then(async (request) => {
+              var batteryInfo = await request.json();
+              await interaction.editReply(
+                `Battery for ${getToyName(options.getString("toy"))} is: ` +
+                  `${batteryInfo.data !== -1 ? batteryInfo.data : "UNKNOWN"}%`
+              );
             })
             .catch(() => {
-              interaction.reply("Failed");
+              interaction.editReply("Failed to get Battery ;-;");
             });
           break;
 
@@ -106,6 +145,14 @@ fetch("https://api.lovense.com/api/lan/getToys")
             params.t = toy;
           }
           await fetch(lovenseUrl("AVibrate", params));
+
+          if (commandName === "stop") {
+            interaction.reply(
+              `Stopping ${getToyName(options.getString("toy"))}`
+            );
+          } else {
+            interaction.reply(getRandomMessage());
+          }
           break;
 
         case "pulse":
@@ -130,26 +177,55 @@ fetch("https://api.lovense.com/api/lan/getToys")
           await fetch(lovenseUrl("Preset", params)).then((response) =>
             response.json()
           );
-          interaction.reply("Keep going harder.");
+          interaction.reply(getRandomMessage());
           break;
 
+        case "rotateleft":
+          var toy = options.getString("toy");
 
-		case 'rotateleft':
-		case 'rotateright':
-		case 'stoprotate':
+          var params = {
+            v: 20
+          }
+          if (toy !== "ALL") {
+            params.t = toy;
+          }
+          await fetch(lovenseUrl("ARotateAntiClockwise", params)).then((response) =>
+            response.json()
+          );
+          interaction.reply(getRandomMessage());
+          break;
 
-			break;
-        // case 'noraleft':
-        // 	await fetch(nora_left).then(response => response.json());
-        // 	interaction.reply('Make me cum!');
+        case "rotateright":
+          var toy = options.getString("toy");
 
-        // case 'noraright':
-        // 	await fetch(nora_right).then(response => response.json());
-        // 	interaction.reply('I want more');
+          var params = {
+            v: 20
+          }
+          if (toy !== "ALL") {
+            params.t = toy;
+          }
+          await fetch(lovenseUrl("ARotateClockwise", params)).then((response) =>
+            response.json()
+          );
+          interaction.reply(getRandomMessage());
+          break;
 
-        // case 'norastopturn':
-        // 	await fetch(nora_stopturn).then(response => response.json());
-        // 	interaction.reply('I love when you play with me');
+        case "stoprotate":
+          var toy = options.getString("toy");
+
+          var params = {
+            v: 0
+          }
+          if (toy !== "ALL") {
+            params.t = toy;
+          }
+          await fetch(lovenseUrl("ARotateAntiClockwise", params)).then((response) =>
+            response.json()
+          );
+          interaction.reply(
+            `Stopping rotating on ${getToyName(options.getString("toy"))}`
+          );
+          break;
       }
     });
 
@@ -157,7 +233,7 @@ fetch("https://api.lovense.com/api/lan/getToys")
   })
   .catch((error) => {
     console.error(
-      "Failed to load teh Lovense API for Toy Information. This can be due to many reasons."
+      "Failed to load the Lovense API for Toy Information. This can be due to many reasons."
     );
     console.error("Please provide the following if you have any issues:");
     console.error(error);
@@ -165,18 +241,44 @@ fetch("https://api.lovense.com/api/lan/getToys")
   });
 
 function lovenseUrl(endpoint, values) {
+  if (endpoint.indexOf("A") === 0 && platform == "pc") {
+    endpoint = endpoint.substring(1); // Removes the A for PC specific.
+  }
+
   return (
     `https://${domain}:${port}/${endpoint}` +
     (Object.keys(values).length > 0 ? `?${getProp(values)}` : "")
   );
+
+  function getProp(myData) {
+    var out = [];
+    for (var key in myData) {
+      if (myData.hasOwnProperty(key)) {
+        out.push(key + "=" + encodeURIComponent(myData[key]));
+      }
+    }
+    return out.join("&");
+  }
 }
 
-function getProp(myData) {
-  var out = [];
-  for (var key in myData) {
-    if (myData.hasOwnProperty(key)) {
-      out.push(key + "=" + encodeURIComponent(myData[key]));
-    }
+/**
+ * Get a Toy's Name from it's ID. Helpful when getting stuff from Discord's response. (Returns "All Toys" on "ALL" ID)
+ * @param {String} id ID of a Toy
+ * @returns Toy's Name
+ */
+function getToyName(id) {
+  if (id === "ALL") {
+    return "All Toys";
   }
-  return out.join("&");
+
+  var toy = avalaibleToys.filter((toy) => toy.id === id);
+  return toy.length === 1
+    ? toy[0].nickName !== ""
+      ? toy[0].nickName
+      : toy[0].name
+    : null;
+}
+
+function getRandomMessage() {
+  return returnMessages[Math.floor(Math.random() * returnMessages.length)];
 }
