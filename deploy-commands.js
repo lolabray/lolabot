@@ -212,7 +212,7 @@ function registerCommands(toyValues) {
   // Presets, Only avaliable on specific toys.
 
   var presetToys = toyValuesPlusAll.filter((a) => {
-    return ["lush", "hush", "ambi", "edge", "domi", "osci", "ALL"].indexOf(
+    return ["lush", "hush", "ambi", "edge", "domi", "osci", "all"].indexOf(
       a.safeName.toLowerCase()
     ) !== -1;
   });
