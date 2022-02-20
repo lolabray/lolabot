@@ -4,7 +4,7 @@ const {
 } = require("@discordjs/builders");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-const { clientId, guildId, token } = require("./config.json");
+const { clientId, guildId, token, config_domain, config_port } = require("./config.json");
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
@@ -21,50 +21,114 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
 
   var keys = Object.keys(lovenseConfig);
   if (keys.length === 0) {
-    console.error("No information found in Lovense Config");
-    console.error(
-      "Please check you are running the Lovesense CONNECT (not remote) App on your Phone or Desktop PC."
-    );
-    console.error(
-      "Please also check that you can see information returned from: https://api.lovense.com/api/lan/getToys website."
-    );
-    console.error("");
+    if (config_domain !== "" && config_port !== "") {
+      directConfig();
+      return;
+    }
+    else {
+      console.error("No information found in Lovense Config");
+      console.error(
+        "Please check you are running the Lovesense CONNECT (not remote) App on your Phone or Desktop PC."
+      );
+      console.error(
+        "Please also check that you can see information returned from: https://api.lovense.com/api/lan/getToys website."
+      );
+      console.error("");
 
-    process.exit(1);
-  } else if (keys.length > 1) {
+      process.exit(1);
+    }
+  }
+  else if (keys.length > 1) {
     console.error(
       "Multiple connected users on same network, currently not setup to support this."
     );
     process.exit(1);
   }
 
-  var domain = keys[0];
-  var lovenseDetails = lovenseConfig[domain];
+  else {
+    var domain = keys[0];
+    var lovenseDetails = lovenseConfig[domain];
 
-  console.log("Lovense Details: ");
-  console.log("Domain:        " + lovenseDetails.domain);
-  console.log("Port (Secure): " + lovenseDetails.httpsPort);
-  console.log("Device:        " + lovenseDetails.platform);
-  console.log("Toys:");
-  for (const [_id, toyDetails] of Object.entries(lovenseDetails.toys)) {
-    var nickname =
-      toyDetails.nickName !== ""
-        ? `${toyDetails.nickName} - (${toyDetails.name})`
-        : toyDetails.name;
+    console.log("Lovense Details: ");
+    console.log("Domain:        " + lovenseDetails.domain);
+    console.log("Port (Secure): " + lovenseDetails.httpsPort);
+    console.log("Device:        " + lovenseDetails.platform);
+    console.log("Toys:");
+    for (const [_id, toyDetails] of Object.entries(lovenseDetails.toys)) {
+      var nickname =
+        toyDetails.nickName !== ""
+          ? `${toyDetails.nickName} - (${toyDetails.name})`
+          : toyDetails.name;
 
-    console.log(
-      `${nickname}: (${toyDetails.id})  ` +
-        `[Version: ${toyDetails.version}] [Battery: ${toyDetails.battery}] - ` +
-        `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
-    );
+      console.log(
+        `${nickname}: (${toyDetails.id})  ` +
+          `[Version: ${toyDetails.version}] [Battery: ${toyDetails.battery}] - ` +
+          `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
+      );
 
-    toyValues.push({
-      name: nickname,
-      safeName: toyDetails.name,
-      value: toyDetails.id,
-    });
+      toyValues.push({
+        name: nickname,
+        safeName: toyDetails.name,
+        value: toyDetails.id,
+      });
+    }
+
+    registerCommands(toyValues);
   }
 
+});
+
+function fixObject(array) {
+  return array.map((e) => [e.name, e.value]);
+}
+
+function directConfig() {
+  fetch(`https://${config_domain}:${config_port}/GetToys`)
+    .then(async (data) => {
+      var response = await data.json();
+
+      if (response.code === "200") {
+
+        console.log("Lovense Details: ");
+        console.log("Domain:        " + config_domain);
+        console.log("Port (Secure): " + config_port);
+        console.log("Device:        " + (config_domain.indexOf('127-0-0-1') !== -1 ? "pc" : "mobile (unknown)"));
+        console.log("Toys:");
+        for (const [_id, toyDetails] of Object.entries(response.data)) {
+          var nickname =
+            toyDetails.nickName !== ""
+              ? `${toyDetails.nickName} - (${toyDetails.name})`
+              : toyDetails.name;
+
+          console.log(
+            `  ${nickname}: (${toyDetails.id})  ` +
+              `[Version: ${toyDetails.version}] [Battery: ${toyDetails.battery}] - ` +
+              `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
+          );
+
+          toyValues.push({
+            name: nickname,
+            safeName: toyDetails.name,
+            value: toyDetails.id,
+          });
+        }
+
+        registerCommands(toyValues);
+      }
+      else {
+        console.error(
+          `Lovense API returned a Unexpected code of ${response.code}`
+        );
+        console.error(
+          `Please provide the following details in the error report:`
+        )
+        console.error(response)
+        process.exit(1);
+      }
+    })
+}
+
+function registerCommands(toyValues) {
   toyValuesPlusAll = Object.create(toyValues);
   toyValuesPlusAll.push({
     name: "All",
@@ -148,8 +212,8 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
   // Presets, Only avaliable on specific toys.
 
   var presetToys = toyValuesPlusAll.filter((a) => {
-    ["lush", "hush", "ambi", "edge", "domi", "osci", "ALL"].indexOf(
-      a.safeName
+    return ["lush", "hush", "ambi", "edge", "domi", "osci", "all"].indexOf(
+      a.safeName.toLowerCase()
     ) !== -1;
   });
   if (presetToys.length > 0) {
@@ -190,7 +254,7 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
   }
 
   var noraToys = toyValuesPlusAll.filter((a) => {
-    ["nora"].indexOf(a.safeName) !== -1;
+    return ["nora"].indexOf(a.safeName.toLowerCase()) !== -1;
   });
   if (noraToys.length > 0) {
     commands.push(
@@ -243,10 +307,6 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
       console.error
       // add suggestion link for users to have right perms: https://discord.com/oauth2/authorize?client_id=416550368236011520&permissions=8&scope=bot%20applications.commands
     );
-});
-
-function fixObject(array) {
-  return array.map((e) => [e.name, e.value]);
 }
 
 // new SlashCommandBuilder().setName('lushhigh')	.setDescription('Play with the LUSH on HIGH.'),
