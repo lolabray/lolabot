@@ -1,0 +1,34 @@
+{
+  "name": "lolabot",
+  "version": "3.0.1",
+  "description": "Discord bot that let's you control Lovesense toys.",
+  "main": "index.js",
+  "scripts": {
+    "main": "node index.js",
+    "deploy": "node deploy-commands.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lolabray/lolabot.git"
+  },
+  "keywords": [
+    "lovense",
+    "discord",
+    "discord-bot",
+    "sextoys"
+  ],
+  "author": "Lola (lolabray)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lolabray/lolabot/issues"
+  },
+  "homepage": "https://github.com/lolabray/lolabot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.27.2",
+    "discord.js": "^13.6.0",
+    "node-fetch": "^3.2.0"
+  }
+}
