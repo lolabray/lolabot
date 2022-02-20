@@ -89,6 +89,7 @@ fetch("https://api.lovense.com/api/lan/getToys")
         });
       }
 
+      startBot();
     }
   })
   .catch((error) => {
@@ -138,6 +139,8 @@ function directConfig() {
             id: toyDetails.id,
           });
         }
+
+        startBot();
 
       }
       else {
