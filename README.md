@@ -18,8 +18,14 @@
 ---
 
 <p align="center"> The Discord Bot that controls your Lovense toys.
-    <br> Currently supports *most* Lovense brand toys<br>
-    Join the Discord server for support or to contribute to the bot: (https://discord.gg/4VGtUNKrkT) <br> </p>
+    <br> Currently supports all Lovense brand toys. with varying degree of functionality<br>
+    Join the Discord server for support or to contribute to the bot: (https://discord.gg/4VGtUNKrkT) <br>
+    <br>
+    <b>
+	A number of changes have been made for version 3.0.1, including renaming ALL commands &<br>
+	providing a experience for anyone with any toys to work with as it.
+    </b>
+</p>
 
 
 
@@ -36,14 +42,14 @@
 
 ## 🧐 About <a name = "about"></a>
 LolaBot was developed by a camgirl who was looking for a way to control her lovense toys in her discord server.
-<br>LolaBot is contolled by slash commands (example: /high) that activate the toys via the discord bot.
+<br>LolaBot is controlled by slash commands (example: /high) that activate the toys via the discord bot.
 
 ## 🎥 Demo <a name = "demo"></a>
 ![Working](https://i.imgur.com/RgKnOGj.gif)
 
 ## 🎈 Usage <a name = "usage"></a>
 
-To use the bot, type into your discord server after installation:
+To use the bot, use the following slash commands once you've installed the bot
 ```md
 **LolaBot Commands:**
 
@@ -55,18 +61,18 @@ Battery   - Get Battery of a Given Toy.
 
 **Toy commands**
 *Supported by All Lovense devices*
-high      - Vibrate a specific or ALL toys at MAX POWER
-medium    - Vibrate a specific or ALL toys at Mediuim Power
-low       - Vibrate a specific or ALL toys at low power
-stop      - Stop a specific or ALL toys.
+High      - Vibrate a specific or ALL toys at MAX POWER
+Medium    - Vibrate a specific or ALL toys at Medium Power
+Low       - Vibrate a specific or ALL toys at low power
+Stop      - Stop a specific or ALL toys.
 
-*Only avalaible on Lush, Hush, Ambi, Edge, Domi & Osci Toys*
-pulse     - Pulsate a specific or ALL possile toys
-grind     - Grind a specific or ALL possible toys
-circle    - Circle a specific or ALL possible toys
+*Only available on Lush, Hush, Ambi, Edge, Domi & Osci Toys*
+Pulse     - Pulsate a specific or ALL possible toys
+Grind     - Grind a specific or ALL possible toys
+Circle    - Circle a specific or ALL possible toys
 
-*Only avalaible on Nora*
-Rotateleft  - Rotate a specific or ALL possible toys Counter Clockwise.
+*Only available on Nora*
+RotateLeft  - Rotate a specific or ALL possible toys Counter Clockwise.
 RotateRight - Rotate a specific or ALL possible toys Clockwise.
 RotateStop  - Stop rotating on a specific or ALL possible toys.
 
@@ -76,7 +82,7 @@ RotateStop  - Stop rotating on a specific or ALL possible toys.
 ## 🏁 Getting Started <a name = "getting_started"></a>
 ### Installing <a name = "installing"></a>
 
-1) Install node.js at https://nodejs.org/en/ (I recommend downloading the latest version of v16)
+1) Install node.js at https://nodejs.org/en/. (Minimum v16.6 but, I recommend downloading the latest version of v16)
 
 2) Next, You will need to download the source code from GitHub. This can be done either via the Green **Code** Button and clicking Download ZIP, and Extracting the contents where you'd like.
 
@@ -92,63 +98,62 @@ npm install
 ```
 ![working](https://i.imgur.com/dPSOFtl.gif)<br>
 
-Additional resources: [Discord.Js Guide](https://discordjs.guide/)
-
 ## 🚀 Deploying your own bot <a name = "deployment"></a>
-Log onto the Discord Developer Portal: (https://discord.com/developers/applications) and create a new application.<br>
-
+1) Log onto the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.<br>
 ![working](https://imgur.com/JS4TdZK.png)<br>
 
-Set your photo, name your bot, add a description.<br>
-Select "Bot" on the side panel, under settings.<br>
-![working](https://imgur.com/Etzf6RF.png)<br>
-Click to find your token, copy this and add it to the file config.json that you downloaded.<br>
-![working](https://imgur.com/n0drNJW.png)<br>
-Replace "YOUR-DISCORD-TOKEN" in config.json, with the token you copied.<br>
-![working](https://imgur.com/br2RKT8.png)<br>
+2) Set your photo, name your bot, add a description.<br>
+3) Select "Bot" on the side panel, under settings.<br>
+  ![working](https://imgur.com/Etzf6RF.png)<br>
+  Click to find your token, copy this and add it to the file config.json that you downloaded.<br>
+  ![working](https://imgur.com/n0drNJW.png)<br>
+  Replace "YOUR-DISCORD-TOKEN" in `config.json`, with the token you copied. (KEEP THIS SAFE)<br>
+  ![working](https://imgur.com/br2RKT8.png)<br>
 
-Next find your guild ID, which will also need to be replaced in config.json by:
-Turning on developer mode on your Discord client, under Settings/Advanced.
+4) Next find your guild ID, which will also need to be replaced in `config.json` by:<br>
+  Turning on developer mode on your Discord client, under Settings/Advanced.<br>
+  ![working](https://imgur.com/vyvqNW3.png)<br>
+  Once developer mode is on, right click on the server/channel your bot is joining and copy ID (bottom of menu). This is your guild ID.<br>
+  ![Copy ID](https://i.imgur.com/TwByqjP.png)
 
-![working](https://imgur.com/vyvqNW3.png)<br>
-Once developer mode is on, left click on the server/channel your bot is joining and copy ID (bottom of menu). This is your guild ID.
+5) Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
+  ![working](https://imgur.com/pE3KbZv.png)<br>
+  From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.<br>
+  ![working](https://imgur.com/KAIBhsi.png)<br>
+  Copy this url into your web browser and add the bot to a server you manage<br>
+  ![working](https://imgur.com/GA84dnX.png)<br>
 
-Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
-![working](https://imgur.com/pE3KbZv.png)<br>
-
-From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.<br>
-![working](https://imgur.com/KAIBhsi.png)<br>
-Copy this url into your web browser and add the bot to a server you manage<br>
-![working](https://imgur.com/GA84dnX.png)<br>
-
-Last, find your client ID by left clicking on the bot (once it's added in the previous step), going to 'copy ID' and replace in config.json.
+6) Last, find your client ID by left clicking on the bot (once it's added in the previous step), going to 'copy ID' and replace in `config.json`.
 
 Additional resources: [Discord.Js Guide](https://discordjs.guide/)
 
 ### Deploy the Bot
 Deploying the bot will create the commands based upon which toys which are available within the app (even if they're not online). So if you have added more toys to your collection, please re-run this command and it will add them too. 
 
-1) Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (shift+LeftClick) if you have closed it.
+1) Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (Shift+LeftClick) if you have closed it.
 
-	This time, copy and paste the following in powershell:
-	```
-	npm run deploy
-	```
-	This should reply with information about your toys and finally end off on: **Successfully registered slash commands.**<br/>
+  This time, copy and paste the following in powershell:
+  ```
+  npm run deploy
+  ```
+  This should reply with information about your toys and finally end off on: **Successfully registered slash commands.**<br />
   If this returns **No information found in Lovense Config**, Make sure that your Phone/Desktop App is online and re-try running the deploy script.
+  <br /><br/>
+  If this keeps on failing, please manually run https://api.lovense.com/api/lan/getToys in your browser and place the `domain` and `httpsPort` (Not to be confused with `httpPort`) inside of the `config.json` in the `config_domain` and `config_port` fields, and again retry.<br />
+  This directly calls the local API for the information on the toys you have, but doesn't effect the usage of the bot. 😸
 
-2)	Next, deploy the bot with 'node index.js', this will be how you start the bot each time.
+2) Next, start the bot with the following command:
+  ```
+  npm run main
+  ```
 
-	```
-	npm run main
-	```
-
-	If done correctly, the bot should say "LolaBot 3.0 - Ready to Play!". Do not close the powershell window while the bot is operating.<br>
-Each time you want to run the bot, you must repeat the 'Deploy the bot' instructions and leave the powershell window open.<br>
+  If done correctly, the bot should say information about your current toys, and finally say **LolaBot 3.0 - Ready to Play!** when the bot is online and ready.<br />
+  Do not close the powershell window while the bot is operating as this will stop it.<br>
+  Each time you want to run the bot, you must repeat Step 2 and leave the powershell window open.<br>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 + [node.js](https://praw.readthedocs.io/en/latest/)
-+ [discord.js](https://www.heroku.com/)
++ [discord.js](https://discord.js.org/)
 + [node-fetch](https://www.https://github.com/node-fetch/node-fetch)
 + [Lovense Local API](https://www.lovense.com/sextoys/developer/doc#solution-3-cam-kit-step3)
 
@@ -168,7 +173,7 @@ All work that is currently planned for LolaBot:
 
 ### Done:
 - [x] Battery Life command
-- [x] Ability to change parameters (toyId, domain/port) via discord commands - *Technically this is made obsolite via the API*
+- [x] Ability to change parameters (toyId, domain/port) via discord commands - *Technically this is made obsolete via the API*
 - [x] Complete Readme.md with full instructions for LolaBot
 - [x] Upload LolaBot code, start readme.md
 
