@@ -116,10 +116,10 @@ npm install
   Once developer mode is on, right click on the server/channel your bot is joining and copy ID (bottom of menu). This is your guild ID.<br>
   ![Copy ID](https://i.imgur.com/TwByqjP.png)
 
-5) Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings.<br>
-  ![working](https://imgur.com/pE3KbZv.png)<br>
-  From here, click the bot square and generate a url. You can also set permissions below, or leave it blank.<br>
-  ![working](https://imgur.com/KAIBhsi.png)<br>
+5) Go to OAuth2 on the Discord Developer Portal, located on the side panel under settings, and select the URL Generator.<br>
+  ![working](https://i.imgur.com/zTTsN1S.png)<br>
+  From here, click the `bot` & `applications.commands` scopes and generate a url. You can also set permissions below, or leave it blank.<br>
+  ![working](https://i.imgur.com/3BZoziQ.png)<br>
   Copy this url into your web browser and add the bot to a server you manage<br>
   ![working](https://imgur.com/GA84dnX.png)<br>
 
