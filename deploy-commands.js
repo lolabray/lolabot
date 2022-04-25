@@ -4,7 +4,7 @@ const {
 } = require("@discordjs/builders");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-const { clientId, guildId, token, config_domain, config_port, toyPower } = require("./config.json");
+const { clientId, guildId, token, config_domain, config_port, toy_power } = require("./config.json");
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
@@ -180,7 +180,7 @@ function registerCommands(toyValues) {
           .setName("power")
           .setRequired(false)
           .setDescription("Select the power of the Toy")
-          .setChoices(fixObject(toyPower))
+          .setChoices(fixObject(toy_power))
       ),
 
     new SlashCommandBuilder()
@@ -317,7 +317,7 @@ function registerCommands(toyValues) {
             .setName("power")
             .setRequired(false)
             .setDescription("Select the power of the Toy")
-            .setChoices(fixObject(toyPower))
+            .setChoices(fixObject(toy_power))
         ),
 
     );
@@ -346,7 +346,7 @@ function registerCommands(toyValues) {
             .setName("power")
             .setRequired(false)
             .setDescription("Select the power of the Toy")
-            .setChoices(fixObject(toyPower))
+            .setChoices(fixObject(toy_power))
         ),
 
       new SlashCommandBuilder()
@@ -364,7 +364,7 @@ function registerCommands(toyValues) {
             .setName("power")
             .setRequired(false)
             .setDescription("Select the power of the Toy")
-            .setChoices(fixObject(toyPower))
+            .setChoices(fixObject(toy_power))
         ),
 
       new SlashCommandBuilder()

@@ -159,7 +159,7 @@ function directConfig() {
 
 function startBot() {
   client.once("ready", () => {
-    console.log("LolaBot 3.0 - Ready to Play!");
+    console.log("LolaBot 4.0.0 - Ready to Play!");
   });
 
   client.on("interactionCreate", async (interaction) => {
