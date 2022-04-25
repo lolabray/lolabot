@@ -18,12 +18,13 @@
 ---
 
 <p align="center"> The Discord Bot that controls your Lovense toys.
-    <br> Currently supports all Lovense brand toys. with varying degree of functionality<br>
+    <br> Currently supports all Lovense brand toys (With no Contraction support on Max Toys)<br>
     Join the Discord server for support or to contribute to the bot: (https://discord.gg/4VGtUNKrkT) <br>
     <br>
     <b>
-	A number of changes have been made for version 3.0.1, including renaming ALL commands &<br>
-	providing a experience for anyone with any toys to work with as it.
+	A number of changes have been made for version 4.0.0, including adding new commands &
+	parameters on top of the improved 3.0.1 experience allowing for all toys to work.<br />
+  Please make sure to update all files including the config as there's more customisation in there.
     </b>
 </p>
 

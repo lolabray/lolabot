@@ -1,6 +1,6 @@
 {
   "name": "lolabot",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Discord bot that let's you control Lovesense toys.",
   "main": "index.js",
   "scripts": {
