@@ -4,5 +4,12 @@
 	"token"		: "YOUR-DISCORD-BOT-TOKEN",
 	
 	"config_domain"	: "",
-	"config_port"	: ""
+	"config_port"	: "",
+	
+	"defaultPower": 20,
+	"toy_power": [
+		{ "name": "low",    "value": 1 },
+		{ "name": "medium", "value": 10 },
+		{ "name": "high",   "value": 20 }
+	]
 }
