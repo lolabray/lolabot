@@ -1,5 +1,5 @@
 const { Client, Intents } = require("discord.js");
-const { token, config_domain, config_port } = require("./config.json");
+const { token, config_domain, config_port, defaultPower } = require("./config.json");
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
@@ -24,7 +24,7 @@ const returnMessages = [
   "Make me squirt!",
 ];
 
-var avalaibleToys = [];
+var availableToys = [];
 var domain, port, platform;
 
 // replace with fetch.
@@ -40,11 +40,14 @@ fetch("https://api.lovense.com/api/lan/getToys")
       else {
         console.error("No information found in Lovense Config");
         console.error(
-          "Please check you are running the Lovesense CONNECT (not remote) App on your Phone or Desktop PC."
+          "Please check you are running the Lovense CONNECT (not remote) App on your Phone or Desktop PC."
         );
         console.error(
           "Please also check that you can see information returned from: https://api.lovense.com/api/lan/getToys website."
         );
+        console.warn(
+          "If this continues to fail again and again... You can go to the URL Above and use the \"domain\" and \"httpsPort\" (not httpPort) and place them into the config_domain and config_port in the config.json file."
+        )
         console.error("");
 
         process.exit(1);
@@ -75,14 +78,13 @@ fetch("https://api.lovense.com/api/lan/getToys")
             : toyDetails.name;
 
         console.log(
-          `${nickname}: (${toyDetails.id})  [Version: ${
-            toyDetails.version
-          }] [Battery: ${toyDetails.battery}]     ${
-            toyDetails.status === 1 ? "Connected" : "Disconnected"
-          }`
+          `${nickname}: (${toyDetails.id})  `+
+          `[Version: ${toyDetails.version}] `+
+          `[Battery: ${toyDetails.battery.toString().padStart(3, ' ')}]     `+
+          `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
         );
 
-        avalaibleToys.push({
+        availableToys.push({
           toy: nickname,
           nickName: toyDetails.nickName,
           id: toyDetails.id,
@@ -126,14 +128,13 @@ function directConfig() {
               : toyDetails.name;
 
           console.log(
-            `  ${nickname}: (${toyDetails.id})  [Version: ${
-              toyDetails.version
-            }] [Battery: ${toyDetails.battery}]     ${
-              toyDetails.status === 1 ? "Connected" : "Disconnected"
-            }`
+            `  ${nickname}: (${toyDetails.id})  `+
+            `[Version: ${toyDetails.version}] `+
+            `[Battery: ${toyDetails.battery.toString().padStart(3, ' ')}]     `+
+            `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
           );
 
-          avalaibleToys.push({
+          availableToys.push({
             toy: nickname,
             nickName: toyDetails.nickName,
             id: toyDetails.id,
@@ -187,49 +188,79 @@ function startBot() {
         // We need to "edit" the reply afterwards
         await interaction.deferReply();
 
-        await fetch(lovenseUrl("Battery", { t: options.getString("toy") }))
+        var selectedToy = options.getString("toy", false);
+        var params = {};
+
+        await fetch(lovenseUrl("GetToys", params))
           .then(async (request) => {
-            var batteryInfo = await request.json();
-            await interaction.editReply(
-              `Battery for ${getToyName(options.getString("toy"))} is: ` +
-                `${batteryInfo.data !== -1 ? batteryInfo.data : "UNKNOWN"}%`
-            );
+            var toyInfo = await request.json();
+
+            var outputMessage =
+              "Toy Battery" +
+              (Object.entries(toyInfo.data).length > 1 && selectedToy === null ? "s" : "") +
+              ":";
+
+            for (const [toyId, toyDetails] of Object.entries(toyInfo.data)) {
+              // Only get the user selected Toys.
+              if (selectedToy !== null && selectedToy !== toyId) {
+                continue;
+              }
+
+              var nickname =
+                toyDetails.nickName !== ""
+                  ? `${toyDetails.nickName} - (${toyDetails.name})`
+                  : toyDetails.name;
+
+              outputMessage +=
+                `\n> ${nickname}: \`${toyDetails.battery.toString().padStart(3, ' ')}\` | `+
+                  `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`;
+            }
+
+            interaction.editReply( outputMessage );
           })
-          .catch(() => {
+          .catch((e) => {
             interaction.editReply("Failed to get Battery ;-;");
+            console.log("Error has been encountered while trying to get Battery:", e);
           });
         break;
 
-      case "low":
-      case "medium":
-      case "high":
-      case "stop":
+
+      case "vibrate":
+        var toy = options.getString("toy");
+        var power = options.getInteger("power", false);
+        if (!power) { power = defaultPower; }
+
+        var params = {
+          sec: 0,
+          v: power
+        }
+        if (toy !== 'ALL') {
+          params.t = toy;
+        }
+
+        await fetch(lovenseUrl("AVibrate", params));
+        interaction.reply(getRandomMessage());
+        break;
+
+      case "stopvibrate":
         var toy = options.getString("toy");
 
         var params = {
           sec: 0,
-          v:
-            commandName === "high"
-              ? 20
-              : commandName === "medium"
-              ? 10
-              : commandName === "low"
-              ? 1
-              : 0, // Stop
-        };
-        if (toy !== "ALL") {
+          v: 0
+        }
+        if (toy !== 'ALL') {
           params.t = toy;
         }
-        await fetch(lovenseUrl("AVibrate", params));
 
-        if (commandName === "stop") {
-          interaction.reply(
-            `Stopping ${getToyName(options.getString("toy"))}`
-          );
-        } else {
-          interaction.reply(getRandomMessage());
-        }
+        await fetch(lovenseUrl("AVibrate", params));
+        interaction.reply(
+          `Stopping ${getToyName(toy)}`
+        );
         break;
+
+      // ==============================
+      // PRESET SPECIFIC COMMANDS
 
       case "pulse":
       case "circle":
@@ -256,11 +287,48 @@ function startBot() {
         interaction.reply(getRandomMessage());
         break;
 
-      case "rotateleft":
+      // ==============================
+      // EDGE SPECIFIC COMMANDS
+
+      case "vibrateedge":
+        var location = options.getString("location");
         var toy = options.getString("toy");
 
+        var power = options.getInteger("power", false)
+        if (!power) { power = defaultPower; }
+
         var params = {
-          v: 20
+          sec: 0,
+          v: power
+        }
+        if (toy !== "ALL") {
+          params.t = toy;
+        }
+
+        if (location === "top") {
+          await fetch(lovenseUrl("AVibrate1", params)).then((response) => {
+            response.json()
+          });
+        }
+        else if (location === "bottom") {
+          await fetch(lovenseUrl("AVibrate2", params)).then((response) => {
+            response.json()
+          });
+        }
+
+        interaction.reply(getRandomMessage());
+        break;
+
+      // ==============================
+      // NORA SPECIFIC COMMANDS
+
+      case "rotateleft":
+        var toy = options.getString("toy");
+        var power = options.getInteger("power", false)
+        if (!power) { power = defaultPower; }
+
+        var params = {
+          v: power
         }
         if (toy !== "ALL") {
           params.t = toy;
@@ -273,9 +341,11 @@ function startBot() {
 
       case "rotateright":
         var toy = options.getString("toy");
+        var power = options.getInteger("power", false)
+        if (!power) { power = defaultPower; }
 
         var params = {
-          v: 20
+          v: power
         }
         if (toy !== "ALL") {
           params.t = toy;
@@ -301,6 +371,40 @@ function startBot() {
         interaction.reply(
           `Stopping rotating on ${getToyName(options.getString("toy"))}`
         );
+        break;
+
+
+      // ==============================
+      // LEGACY COMMANDS based upon the original re-make
+      case "low":
+      case "medium":
+      case "high":
+      case "stop":
+        var toy = options.getString("toy");
+
+        var params = {
+          sec: 0,
+          v:
+            commandName === "high"
+              ? 20
+              : commandName === "medium"
+              ? 10
+              : commandName === "low"
+              ? 1
+              : 0, // Stop
+        };
+        if (toy !== "ALL") {
+          params.t = toy;
+        }
+        await fetch(lovenseUrl("AVibrate", params));
+
+        if (commandName === "stop") {
+          interaction.reply(
+            `Stopping ${getToyName(toy)}`
+          );
+        } else {
+          interaction.reply(getRandomMessage());
+        }
         break;
     }
   });
@@ -343,11 +447,11 @@ function getToyName(id) {
     return "All Toys";
   }
 
-  var toy = avalaibleToys.filter((toy) => toy.id === id);
+  var toy = availableToys.filter((toy) => toy.id === id);
   return toy.length === 1
-    ? toy[0].nickName !== ""
+    ? toy[0].nickName !== "" && toy[0].nickName !== undefined
       ? toy[0].nickName
-      : toy[0].name
+      : toy[0].toy
     : null;
 }
 

@@ -61,6 +61,9 @@ Battery   - Get Battery of a Given Toy.
 
 **Toy commands**
 *Supported by All Lovense devices*
+Vibrate     - Vibrate a specific or ALL toys with a specified power
+StopVibrate - Stop Vibrating the Toy
+
 High      - Vibrate a specific or ALL toys at MAX POWER
 Medium    - Vibrate a specific or ALL toys at Medium Power
 Low       - Vibrate a specific or ALL toys at low power
@@ -71,12 +74,15 @@ Pulse     - Pulsate a specific or ALL possible toys
 Grind     - Grind a specific or ALL possible toys
 Circle    - Circle a specific or ALL possible toys
 
+*Only available on Edge*
+VibrateEdge - Vibrate the Top or Bottom an Edge Toy
+
 *Only available on Nora*
 RotateLeft  - Rotate a specific or ALL possible toys Counter Clockwise.
 RotateRight - Rotate a specific or ALL possible toys Clockwise.
 RotateStop  - Stop rotating on a specific or ALL possible toys.
 
-*More commands are planned for some of the more specific toys like Edge & Max.*
+*More commands are planned for some of the more specific toys like Max.*
 ```
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -127,8 +133,24 @@ npm install
 
 Additional resources: [Discord.Js Guide](https://discordjs.guide/)
 
+### 🔧 Configuring the Bot
+As all great things should, you should be able to Customise your Toys to have fun. 😉 In the bot we have Customisations for each of the Toy's Power, and the Default Power it will select when no Power is provided.
+
+`defaultPower` requires you a Number from 1-20 (weakest - strongest)<br />
+`toy_power` is a List where you can provide the name which is displayed in Discord and Value is the Power which will be applied to the Bot. If you want to add a new item, copy a row and change the name & value to whatever you please.<br />
+REMEMBER to keep the comma at the end UNLESS it is the last row and keep them contained inside of the square brackets \[ \].
+```json
+	"defaultPower": 20,
+	"toy_power": [
+		{ "name": "low",    "value": 1 },
+		{ "name": "medium", "value": 10 },
+		{ "name": "high",   "value": 20 }
+	]
+```
+
+
 ### Deploy the Bot
-Deploying the bot will create the commands based upon which toys which are available within the app (even if they're not online). So if you have added more toys to your collection, please re-run this command and it will add them too. 
+Deploying the bot will create the commands based upon which toys which are available within the app (even if they're not online). So if you have added more toys to your collection, please re-run this command and it will add them too.
 
 1) Go to the main file folder that you downloaded from GitHub and reopen your Powershell window (Shift+LeftClick) if you have closed it.
 
@@ -169,7 +191,7 @@ All work that is currently planned for LolaBot:
 ### In Progress:
 
 - [ ] Neater code, a command handler plus separate files for commands
-- [ ] Commands for all Lovense toys, *Currently missing specific commands for: Max, Edge*
+- [ ] Commands for all Lovense toys, *Currently missing specific commands for: Max* [Added Edge]
 
 ### Done:
 - [x] Battery Life command

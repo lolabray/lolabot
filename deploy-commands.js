@@ -4,15 +4,12 @@ const {
 } = require("@discordjs/builders");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-const { clientId, guildId, token, config_domain, config_port } = require("./config.json");
+const { clientId, guildId, token, config_domain, config_port, toyPower } = require("./config.json");
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-// Reduce commands to:
-// High / Medium / Low
-// Preset 1 (pulse), 2 (circle), 3 (grind)
-// Stop
+
 var toyValues = [];
 var toyValuesPlusAll = [];
 
@@ -28,11 +25,14 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
     else {
       console.error("No information found in Lovense Config");
       console.error(
-        "Please check you are running the Lovesense CONNECT (not remote) App on your Phone or Desktop PC."
+        "Please check you are running the Lovense CONNECT (not remote) App on your Phone or Desktop PC."
       );
       console.error(
         "Please also check that you can see information returned from: https://api.lovense.com/api/lan/getToys website."
       );
+      console.warn(
+        "If this continues to fail again and again... You can go to the URL Above and use the \"domain\" and \"httpsPort\" (not httpPort) and place them into the config_domain and config_port in the config.json file."
+      )
       console.error("");
 
       process.exit(1);
@@ -62,7 +62,8 @@ fetch("https://api.lovense.com/api/lan/getToys").then(async (response) => {
 
       console.log(
         `${nickname}: (${toyDetails.id})  ` +
-          `[Version: ${toyDetails.version}] [Battery: ${toyDetails.battery}] - ` +
+          `[Version: ${toyDetails.version}] `+
+          `[Battery: ${toyDetails.battery.toString().padStart(3, " ")}] - ` +
           `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
       );
 
@@ -102,7 +103,8 @@ function directConfig() {
 
           console.log(
             `  ${nickname}: (${toyDetails.id})  ` +
-              `[Version: ${toyDetails.version}] [Battery: ${toyDetails.battery}] - ` +
+              `[Version: ${toyDetails.version}] `+
+              `[Battery: ${toyDetails.battery.toString().padStart(3, " ")}] - ` +
               `${toyDetails.status === 1 ? "Connected" : "Disconnected"}`
           );
 
@@ -158,9 +160,38 @@ function registerCommands(toyValues) {
       .addStringOption((option) =>
         option
           .setName("toy")
-          .setRequired(true)
+          .setRequired(false)
           .setDescription("Pick a Toy")
           .setChoices(fixObject(toyValues))
+      ),
+
+    new SlashCommandBuilder()
+      .setName("vibrate")
+      .setDescription("Vibrate a Toy with a power")
+      .addStringOption((option) =>
+        option
+          .setName("toy")
+          .setRequired(true)
+          .setDescription("Pick a Toy")
+          .setChoices(fixObject(toyValuesPlusAll))
+      )
+      .addIntegerOption((option) =>
+        option
+          .setName("power")
+          .setRequired(false)
+          .setDescription("Select the power of the Toy")
+          .setChoices(fixObject(toyPower))
+      ),
+
+    new SlashCommandBuilder()
+      .setName("stopvibrate")
+      .setDescription("Stop a toy Vibrating. ;-;")
+      .addStringOption((option) =>
+        option
+          .setName("toy")
+          .setRequired(true)
+          .setDescription("Pick a Toy")
+          .setChoices(fixObject(toyValuesPlusAll))
       ),
 
     new SlashCommandBuilder()
@@ -209,7 +240,7 @@ function registerCommands(toyValues) {
   ];
 
   // =====================================================
-  // Presets, Only avaliable on specific toys.
+  // Presets, Only available on specific toys.
 
   var presetToys = toyValuesPlusAll.filter((a) => {
     return ["lush", "hush", "ambi", "edge", "domi", "osci", "all"].indexOf(
@@ -253,6 +284,48 @@ function registerCommands(toyValues) {
     );
   }
 
+  // =====================================================
+  // Vibrate specific location, Edge specific
+
+  var edgeToys = toyValuesPlusAll.filter((a) => {
+    return ["edge"].indexOf(a.safeName.toLowerCase()) !== -1;
+  });
+  if (edgeToys.length > 0) {
+    commands.push(
+      new SlashCommandBuilder()
+        .setName("vibrateedge")
+        .setDescription("Vibrate the Edge Toy (Top/Bottom)")
+        .addStringOption((option) =>
+          option
+            .setName("toy")
+            .setRequired(true)
+            .setDescription("Pick a Toy")
+            .setChoices(fixObject(edgeToys))
+        )
+        .addStringOption((option) =>
+          option
+            .setName("location")
+            .setRequired(true)
+            .setDescription("Top or Bottom [Use Vibrate for Both]")
+            .setChoices([
+              ["Top",     "top"],
+              ["Bottom",  "bottom"]
+            ])
+        )
+        .addIntegerOption((option) =>
+          option
+            .setName("power")
+            .setRequired(false)
+            .setDescription("Select the power of the Toy")
+            .setChoices(fixObject(toyPower))
+        ),
+
+    );
+  }
+
+  // =====================================================
+  // Rotate, Nora Specific
+
   var noraToys = toyValuesPlusAll.filter((a) => {
     return ["nora"].indexOf(a.safeName.toLowerCase()) !== -1;
   });
@@ -267,6 +340,13 @@ function registerCommands(toyValues) {
             .setRequired(true)
             .setDescription("Pick a Toy")
             .setChoices(fixObject(noraToys))
+        )
+        .addIntegerOption((option) =>
+          option
+            .setName("power")
+            .setRequired(false)
+            .setDescription("Select the power of the Toy")
+            .setChoices(fixObject(toyPower))
         ),
 
       new SlashCommandBuilder()
@@ -278,6 +358,13 @@ function registerCommands(toyValues) {
             .setRequired(true)
             .setDescription("Pick a Toy")
             .setChoices(fixObject(noraToys))
+        )
+        .addIntegerOption((option) =>
+          option
+            .setName("power")
+            .setRequired(false)
+            .setDescription("Select the power of the Toy")
+            .setChoices(fixObject(toyPower))
         ),
 
       new SlashCommandBuilder()
@@ -293,8 +380,7 @@ function registerCommands(toyValues) {
     );
   }
 
-  // To do, Add Edge & Max Commands :)
-  // Don't really understand it as a re-work.
+  // To do, Add Max Commands :) [It's a bit messy]
 
   commands.map((command) => command.toJSON());
 
@@ -303,40 +389,17 @@ function registerCommands(toyValues) {
   rest
     .put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
     .then(() => console.log("Successfully registered slash commands."))
-    .catch(
-      console.error
-      // add suggestion link for users to have right perms: https://discord.com/oauth2/authorize?client_id=416550368236011520&permissions=8&scope=bot%20applications.commands
-    );
-}
+    .catch((e) => {
+      console.error(e);
+      console.log("Hey, the problem you maybe having here is to do with the Bot you have added not having the correct permissions to use Slash commands. You can fix this by using the following OAuth2 URL:");
+      console.log("https://discord.com/oauth2/authorize?client_id="+ clientId +"&permissions=8&scope=bot%20applications.commands");
+    });
 
-// new SlashCommandBuilder().setName('lushhigh')	.setDescription('Play with the LUSH on HIGH.'),
-// new SlashCommandBuilder().setName('lushmed')	.setDescription('Play with the LUSH on MEDIUM.'),
-// new SlashCommandBuilder().setName('lushlow')	.setDescription('Play with the LUSH on LOW.'),
-// new SlashCommandBuilder().setName('lushpulse')	.setDescription('Play with the LUSH on PULSE.'),
-// new SlashCommandBuilder().setName('lushcircle')	.setDescription('Play with the LUSH on CIRCLE.'),
-// new SlashCommandBuilder().setName('lushgrind')	.setDescription('Play with the LUSH on GRIND.'),
-// new SlashCommandBuilder().setName('lushstop')	.setDescription('Stop the LUSH.'),
-// new SlashCommandBuilder().setName('hushhigh')	.setDescription('Play with the HUSH on HIGH.'),
-// new SlashCommandBuilder().setName('hushmed')	.setDescription('Play with the HUSH on MEDIUM.'),
-// new SlashCommandBuilder().setName('hushlow')	.setDescription('Play with the HUSH on LOW.'),
-// new SlashCommandBuilder().setName('hushpulse')	.setDescription('Play with the HUSH on PULSE.'),
-// new SlashCommandBuilder().setName('hushcircle')	.setDescription('Play with the HUSH on CIRCLE.'),
-// new SlashCommandBuilder().setName('hushgrind')	.setDescription('Play with the HUSH on GRIND.'),
-// new SlashCommandBuilder().setName('hushstop')	.setDescription('Stop the HUSH.'),
-// new SlashCommandBuilder().setName('domihigh')	.setDescription('Play with the DOMI on HIGH.'),
-// new SlashCommandBuilder().setName('domimed')	.setDescription('Play with the DOMI on MEDIUM.'),
-// new SlashCommandBuilder().setName('domilow')	.setDescription('Play with the DOMI on LOW.'),
-// new SlashCommandBuilder().setName('domipulse')	.setDescription('Play with the DOMI on PULSE.'),
-// new SlashCommandBuilder().setName('domicircle')	.setDescription('Play with the DOMI on CIRCLE.'),
-// new SlashCommandBuilder().setName('domigrind')	.setDescription('Play with the DOMI on GRIND.'),
-// new SlashCommandBuilder().setName('domistop')	.setDescription('Stop the DOMI.'),
-// new SlashCommandBuilder().setName('norahigh')	.setDescription('Play with the NORA on HIGH.'),
-// new SlashCommandBuilder().setName('noramed')	.setDescription('Play with the NORA on MEDIUM.'),
-// new SlashCommandBuilder().setName('noralow')	.setDescription('Play with the NORA on LOW.'),
-// new SlashCommandBuilder().setName('noraleft')	.setDescription('Play with the NORA on LEFT.'),
-// new SlashCommandBuilder().setName('noraright')	.setDescription('Play with the NORA on RIGHT.'),
-// new SlashCommandBuilder().setName('norastopturn').setDescription('Stop the NORA from TURNING.'),
-// new SlashCommandBuilder().setName('norapulse')	.setDescription('Play with the NORA on PULSE.'),
-// new SlashCommandBuilder().setName('noracircle')	.setDescription('Play with the NORA on CIRCLE.'),
-// new SlashCommandBuilder().setName('noragrind')	.setDescription('Play with the NORA on GRIND.'),
-// new SlashCommandBuilder().setName('norastop')	.setDescription('Stop the NORA from VIBRATING.'),
+  // rest
+  //   .put(Routes.applicationCommands(clientId, { body: commands }))
+  //   .then(() => console.log("Successfully registered GLOBAL slash commands."))
+  //   .catch((e) => {
+  //     console.log("One or more servers may have failed to correctly setup permissions for the bot.");
+  //     console.log("https://discord.com/oauth2/authorize?client_id="+ clientId +"&permissions=8&scope=bot%20applications.commands");
+  //   });
+}
