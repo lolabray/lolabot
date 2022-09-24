@@ -12,7 +12,8 @@
   [![Platform](https://img.shields.io/badge/Platform-Discord-blueviolet?style=for-the-badge&logo=appveyor)](https://github.com/search?q=discord)
   [![GitHub Issues](https://img.shields.io/github/issues/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lolabray/lolabot?style=for-the-badge)](https://github.com/lolabray/lolabot/pulls)
-  [![License](https://img.shields.io/github/license/lolabray/lolabot?style=for-the-badge)](/LICENSE) <br>
+  [![License](https://img.shields.io/github/license/lolabray/lolabot?style=for-the-badge)](/LICENSE) <br><br>
+	[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G6F8U4F)
 </div>
 
 ---
@@ -201,10 +202,10 @@ All work that is currently planned for LolaBot:
 - [x] Upload LolaBot code, start readme.md
 
 ## ✍️ Authors <a name = "authors"></a>
-+ [@lolabray](https://github.com/lolabray)
++ [@lolabray](https://github.com/lolabray) and [@Lat3xKitty](https://github.com/lat3xkitty)
 
 ## 🙌 Contributors <a name = "contributors"></a>
-+ [@Lat3xKitty](https://github.com/lat3xkitty)
+Want to see your name here? Contribute to the project! 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
